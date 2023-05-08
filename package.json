@@ -2,7 +2,7 @@
 	"name": "ninja-tools",
 	"displayName": "NinjaTools",
 	"description": "Ninja tools, personal use only.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "ninja-57",
 	"icon": "images/icon.png",
 	"engines": {
