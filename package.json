@@ -2,7 +2,7 @@
 	"name": "ninja-tools",
 	"displayName": "NinjaTools",
 	"description": "Ninja tools, personal use only.",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "ninja-57",
 	"icon": "images/icon.png",
 	"engines": {
@@ -10,6 +10,9 @@
 	},
 	"categories": [
 		"Other"
+	],
+	"activationEvents": [
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -40,7 +43,32 @@
 					"group": "navigation"
 				}
 			]
-		}
+		},
+		"configuration": [
+			{
+				"title": "工具",
+				"properties": {
+					"ninja-tools.statusbar.items": {
+						"type": "array",
+						"additionalProperties": {
+							"type": "object"
+						},
+						"items": {
+							"text": "string",
+							"command": "string",
+							"tooltip": "string"
+						},
+						"default": [
+							{
+								"text": "NinjaTools: $(tools)",
+								"command": "ninja-tools.no_use",
+								"tooltip": "NinjaToolsExample"
+							}
+						]
+					}
+				}
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -61,8 +89,10 @@
 		"eslint": "^7.6.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.0.1",
-		"pngjs": "^7.0.0",
 		"typescript": "^3.8.3",
 		"vscode-test": "^1.4.0"
+	},
+	"dependencies": {
+		"pngjs": "^7.0.0"
 	}
 }

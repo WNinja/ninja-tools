@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { DropHeroString } from "./drop_string";
 import { logReadable } from "./modules/log";
 import { PngProc } from "./modules/png";
+import { initStatusBarItems } from "./modules/statusbar";
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -10,6 +11,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand("ninja-tools.log_readable", (uri) => logReadable(context, uri)));
 	context.subscriptions.push(vscode.commands.registerCommand("ninja-tools.png_proc", (uri) => PngProc(context, uri)));
+
+	initStatusBarItems(context);
 
 	let cmdDropVPCf = vscode.commands.registerCommand("ninja-tools.hero_drop", async () => {
 		// 生成vtex和vpcf
