@@ -11,7 +11,7 @@ export async function logReadable(context: ExtensionContext, uri: Uri) {
 			count: number,
 			content?: string[];
 		}> = {};
-		let reg = /\d+\|172.17.0.10\|/g;
+		let reg = /\d+\|172\.17\.0\.10\|/g;
 		aMatch.forEach((sStr) => {
 			let lines = sStr.split("\n");
 			if (lines.length >= 2) {
