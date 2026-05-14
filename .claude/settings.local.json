@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /e/git/ninja-tools/syntaxes)"
+    ],
+    "additionalDirectories": [
+      "E:\\git\\ninja-tools"
+    ]
+  }
+}

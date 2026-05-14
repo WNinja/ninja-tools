@@ -20,6 +20,21 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"languages": [
+			{
+				"id": "vdf",
+				"extensions": [".vdf"],
+				"aliases": ["VDF", "vdf"],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "vdf",
+				"scopeName": "source.vdf",
+				"path": "./syntaxes/vdf.tmLanguage.json"
+			}
+		],
 		"commands": [
 			{
 				"command": "ninja-tools.hero_drop",
