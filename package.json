@@ -2,7 +2,7 @@
 	"name": "ninja-tools",
 	"displayName": "NinjaTools",
 	"description": "Ninja tools, personal use only.",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"publisher": "ninja-57",
 	"icon": "images/icon.png",
 	"engines": {
@@ -99,7 +99,7 @@
 		"compile": "tsc -p ./",
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
-		"publish:marketplace": "npm version patch --no-git-tag-version && vsce publish --no-git-tag-version",
+		"publish:marketplace": "node scripts/publish.js",
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js"
 	},
