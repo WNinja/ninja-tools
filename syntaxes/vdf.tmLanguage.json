@@ -3,10 +3,24 @@
 	"name": "VDF",
 	"scopeName": "source.vdf",
 	"patterns": [
-		{ "include": "#comment" },
-		{ "include": "#blockPair" },
-		{ "include": "#stringPair" },
-		{ "include": "#string" }
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#blockPair"
+		},
+		{
+			"include": "#stringPair"
+		},
+		{
+			"include": "#string"
+		},
+		{
+			"include": "#percentPlaceholder"
+		},
+		{
+			"include": "#bracePlaceholder"
+		}
 	],
 	"repository": {
 		"comment": {
@@ -16,28 +30,77 @@
 		"blockPair": {
 			"begin": "(\"[^\"]+\")\\s*(\\{)",
 			"beginCaptures": {
-				"1": { "name": "support.type.property-name.vdf" },
-				"2": { "name": "punctuation.section.block.begin.vdf" }
+				"1": {
+					"name": "support.type.property-name.vdf"
+				},
+				"2": {
+					"name": "punctuation.section.block.begin.vdf"
+				}
 			},
 			"end": "\\}",
 			"endCaptures": {
-				"0": { "name": "punctuation.section.block.end.vdf" }
+				"0": {
+					"name": "punctuation.section.block.end.vdf"
+				}
 			},
 			"name": "meta.block.vdf",
 			"patterns": [
-				{ "include": "$self" }
+				{
+					"include": "$self"
+				}
 			]
 		},
 		"stringPair": {
-			"match": "(\"[^\"]+\")\\s+(\"[^\"]+\")",
-			"captures": {
-				"1": { "name": "support.type.property-name.vdf" },
-				"2": { "name": "string.quoted.double.value.vdf" }
-			}
+			"begin": "(\"[^\"]+\")\\s+\"",
+			"beginCaptures": {
+				"1": {
+					"name": "support.type.property-name.vdf"
+				}
+			},
+			"end": "\"",
+			"name": "string.quoted.double.value.vdf",
+			"patterns": [
+				{
+					"include": "#percentPlaceholder"
+				},
+				{
+					"include": "#bracePlaceholder"
+				}
+			]
 		},
 		"string": {
-			"match": "\"[^\"]*\"",
-			"name": "string.quoted.double.vdf"
+			"begin": "\"",
+			"end": "\"",
+			"name": "string.quoted.double.vdf",
+			"patterns": [
+				{
+					"include": "#percentPlaceholder"
+				},
+				{
+					"include": "#bracePlaceholder"
+				}
+			]
+		},
+		"percentPlaceholder": {
+			"match": "%[a-zA-Z0-9_]+%{1,3}",
+			"name": "entity.name.tag.dota2-abilityvalue.vdf"
+		},
+		"bracePlaceholder": {
+			"match": "(\\{)((?:\\w:)+)([a-zA-Z0-9_]+)(\\})",
+			"captures": {
+				"1": {
+					"name": "keyword.operator.or.regexp.dota2-abilityvalue.vdf"
+				},
+				"2": {
+					"name": "entity.name.type.dota2-abilityvalue.vdf"
+				},
+				"3": {
+					"name": "entity.name.tag.dota2-abilityvalue.vdf"
+				},
+				"4": {
+					"name": "keyword.operator.or.regexp.dota2-abilityvalue.vdf"
+				}
+			}
 		}
 	}
 }
